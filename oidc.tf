@@ -24,7 +24,7 @@ resource "aws_iam_role" "oidc" {
             "Action": "sts:AssumeRoleWithWebIdentity",
             "Condition": {
                 "StringLike": {
-                    "token.actions.githubusercontent.com:sub": "repo:${var.github_oidc_org}/${var.github_oidc_repo}:${var.github_oidc_branch}"
+                    "token.actions.githubusercontent.com:sub": "repo:${var.oidc_org}/${var.oidc_repo}:${var.oidc_branch}"
                 },
                 "StringEquals": {
                     "token.actions.githubusercontent.com:aud": "sts.amazonaws.com"
@@ -37,7 +37,7 @@ EOF
 
   tags = merge(
     {
-      "Name"        = var.role_name
+      "Name"        = aws_iam_role.oidc.name
       "Region"      = var.region
       "Provisioner" = var.provisioner
     },

@@ -37,6 +37,6 @@ data "aws_iam_policy_document" "terraform_execution" {
 
 resource "aws_iam_policy" "terraform_execution" {
   count  = var.create ? 1 : 0
-  name   = "terraform-execution-policy"
+  name   = var.terraform_execution_policy_name
   policy = data.aws_iam_policy_document.terraform_execution.json
 }

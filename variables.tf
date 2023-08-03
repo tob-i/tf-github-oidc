@@ -14,6 +14,18 @@ variable "account_handle" {
   type        = string
 }
 
+variable "region" {
+  description = "Value for region"
+  type        = "string"
+  default     = "eu-central-1"
+}
+
+variable "provisioner" {
+  description = "value for provisioner"
+  type        = string
+  default     = "Terraform"
+}
+
 variable "oidc_url" {
   description = "Value for OIDC url"
   type        = string
@@ -32,18 +44,25 @@ variable "oidc_thumbprint_list" {
   default     = ["1c58a3a8518e8759bf075b76b750d4f2df264fcd"]
 }
 
-variable "github_oidc_org" {
+variable "oidc_org" {
   description = "GitHub Org scope for assume OIDC role"
   type        = string
 }
 
-variable "github_oidc_repo" {
+variable "oidc_repo" {
   description = "GitHub Repo scope for assume OIDC role"
   type        = string
 }
 
-variable "github_oidc_branch" {
+variable "oidc_branch" {
   description = "GitHub Branch scope for assume OIDC role"
+  type        = string
+}
+
+variable "terraform_execution_policy_name" {
+  description = "Value for terraform execution policy name"
+  type        = string
+  default     = "terraform-execution-policy"
 }
 
 variable "tags" {
